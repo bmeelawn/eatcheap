@@ -5,7 +5,7 @@ function authAPI() {
 
     if(array_key_exists('x-api-key', $headers)) {  // Check if header x-api-key exist
         $x_api_key = $headers['x-api-key'];
-        if($x_api_key === $authKey) {
+        if($x_api_key == $authKey) {
             return true;
         } else {    // Show error if key is incorrect
         echo json_encode(
