@@ -8,10 +8,10 @@ header('Content-Type: application/json');
 include '../../includes/autoloader-class.php';
 include '../../includes/utility.php';
 
-if(authAPI()) {
+// if(authAPI()) {
 $restaurant = new RestaurantView();
 echo $restaurant->showAllRestaurant();
-}
+// }
 
 
 
