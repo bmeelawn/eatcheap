@@ -1,5 +1,5 @@
 <?php
-
+print_r(getallheaders());
 include 'application/config/database.php';
     if(isset($_POST['submit'])) {
         $city_id = trim($_POST['city_id']);
