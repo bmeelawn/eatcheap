@@ -39,7 +39,7 @@ class RestaurantView extends RestaurantModel {
         $imageArr = explode(",", $imgs);
         $images['images'] = [];
         foreach($imageArr as $key=>$values) {
-            $imagePath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
+            $imagePath = 'https'. '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
             $filePath = '../../../images/restaurant/';
             if(file_exists($filePath . $imageArr[$key])) {
                 array_push($images['images'], $imagePath . $imageArr[$key]);

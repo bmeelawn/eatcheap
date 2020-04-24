@@ -15,7 +15,7 @@ class GeocodeView extends GeocodeModel {
             foreach($result as $key => $values) {
 
                 $resImg = $result[$key]['restaurant_image'];
-                $imagePath = 'http://localhost/eatcheap/images/restaurant/';
+                $imagePath = 'https'. '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
                 $filePath = '../../../images/restaurant/';
 
                 if(file_exists($filePath . $resImg)) {
