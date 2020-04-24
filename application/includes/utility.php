@@ -1,11 +1,7 @@
 <?php
-include  $_SERVER['DOCUMENT_ROOT'].'/eatcheap/vendor/autoload.php';
-
 function authAPI() {
     $headers = getallheaders(); // Get all Request headers
-    $dotenv = Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'].'/eatcheap'); // Innstanitation of dotenv class
-    $dotenv->load();
-    $authKey = $_ENV['API_KEY'];
+    $authKey = "12345";
 
     if(array_key_exists('x-api-key', $headers)) {  // Check if header x-api-key exist
         $x_api_key = $headers['x-api-key'];
