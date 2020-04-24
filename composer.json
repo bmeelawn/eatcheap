@@ -1,0 +1,6 @@
+{
+    "name": "bmeelawn/eatcheap",
+    "require": {
+        "vlucas/phpdotenv": "^4.1"
+    }
+}
