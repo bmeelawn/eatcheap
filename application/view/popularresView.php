@@ -14,7 +14,7 @@ class PopularresView extends PopularResModel {
 
                 $thmbImg = $result[$key]['thumbnail_image'];
                 $resImg = $result[$key]['restaurant_image'];
-                $imagePath = 'http://localhost/eatcheap/images/restaurant/';
+                $imagePath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
                 $filePath = '../../../images/restaurant/';
 
                 if(file_exists($filePath . $resImg)) {

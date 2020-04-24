@@ -13,7 +13,7 @@ class PopularfoodView extends PopularFoodModel {
             foreach($result as $key => $values) {
                 
                 $imgName= $result[$key]['food_image'];
-                $imagePath = 'http://localhost/eatcheap/images/restaurant/';
+                $imagePath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
                 $filePath = '../../../images/restaurant/';
 
                 if(file_exists($filePath . $imgName)) {
