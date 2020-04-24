@@ -3,8 +3,8 @@ function authAPI() {
     $headers = getallheaders(); // Get all Request headers
     $authKey = "12345";
 
-    if(array_key_exists('x-api-key', $headers)) {  // Check if header x-api-key exist
-        $x_api_key = $headers['x-api-key'];
+    if(array_key_exists('X-Api-Key', $headers)) {  // Check if header x-api-key exist
+        $x_api_key = $headers['X-Api-Key'];
         if($x_api_key == $authKey) {
             return true;
         } else {    // Show error if key is incorrect
