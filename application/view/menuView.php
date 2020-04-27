@@ -17,6 +17,7 @@ class MenuView extends MenuModel {
             $id = ['restaurant_id' => $result[$key]['restaurant_id']];
             $arr = [
                 'food_name' => $result[$key]['name'],
+                'food_image' => $result[$key]['food_image'],
                 'price' => $result[$key]['price']
             ];
         // Push Data Into Data Array
