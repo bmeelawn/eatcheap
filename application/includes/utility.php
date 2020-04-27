@@ -1,4 +1,7 @@
 <?php
+
+// Authenticate for key
+
 function authAPI() {
     $headers = getallheaders(); // Get all Request headers
     $authKey = "12345";
@@ -18,8 +21,18 @@ function authAPI() {
         echo json_encode(
         array(
             'status' => false,
-            'message' => "API Key missing. Every request requires an API Key to be sent."
+            'message' => "API Key missing. Every request requires an API Key to be sent.",
+            'data' => []
             )
         );
     }
+}
+
+// GET Query Param
+
+function getParam() {
+    if(isset($_GET)) {
+        return true;
+    }
+    return false;
 }

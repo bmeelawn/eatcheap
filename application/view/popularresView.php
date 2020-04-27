@@ -7,10 +7,16 @@ class PopularresView extends PopularResModel {
     public function viewPopularRestaurants() {
         $result =  $this->getPopularRestaurant();
         $count = $this->getCount();
+
         // Check $result > 0
         if($count > 0) {
             // Fetch Restaurant Data
             foreach($result as $key => $values) {
+
+                // Get Review for a Restaurant
+                $id = $result[$key]['res_id'];
+                $reviews = $this->getReviews($id);
+                $countReview = $this->getCount();
 
                 $thmbImg = $result[$key]['thumbnail_image'];
                 $resImg = $result[$key]['restaurant_image'];
@@ -22,12 +28,26 @@ class PopularresView extends PopularResModel {
                 }
                 if(file_exists($filePath . $thmbImg)) {
                     $thmbImgUrl = $imagePath . $thmbImg;
-                }  
+                } 
+                
+                $arrR = [];
 
+                if($countReview > 0) {
+                foreach($reviews as $key => $values) {
+                $arrReview =[    
+                    'restaurant_id' => $reviews[$key]['restaurant_id'],
+
+                'name' => $reviews[$key]['name'],
+                'comment' => $reviews[$key]['review']
+                ];  
+                array_push($arrR, $arrReview);           
+                }
+            }   
+            
                 $arr = array(
                 'country_name' => $result[$key]['country_name'],
                 'city_name' => $result[$key]['city_name'],
-                'restaurnat_name' => $result[$key]['restaurant_name'],
+                'restaurant_name' => $result[$key]['restaurant_name'],
                 'restaurant_hours' => $result[$key]['restaurant_hours'],
                 'cuisine_name' => $result[$key]['cuisine_name'],
                 'cuisines' => $result[$key]['cuisines'],
@@ -36,6 +56,7 @@ class PopularresView extends PopularResModel {
                 'average_cost' => $result[$key]['average_cost'],
                 'restaurant_image' => $resImgUrl,
                 'thumbnail_image' => $thmbImgUrl,
+                'review' => $arrR
             );
 
                 // Push Restaurant Data Into Data Array

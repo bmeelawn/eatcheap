@@ -1,20 +1,18 @@
 <?php
+ini_set('display_errors', 1);
 
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Method:GET');
 header('Content-Type: application/json');
+header('Access-Control-Allow-Headers: *');
 
 include '../../includes/autoloader-class.php';
 include '../../includes/utility.php';
 
 if(authAPI()) {
-    $entityBody = json_decode(file_get_contents('php://input'), true);
-    $searchValue = $entityBody['searchValue'];
-    $geocodeView = new GeocodeView();
-    echo $geocodeView->showSearchResults($searchValue);
+    $restaurant = new RestaurantView();
+    echo $restaurant->showAllRestaurant();
 }
-
-
 
 
 

@@ -13,20 +13,21 @@ class GeocodeView extends GeocodeModel {
             $result = $this->getCities();
             // Fetch Restaurant Data
             foreach($result as $key => $values) {
-
                 $resImg = $result[$key]['restaurant_image'];
+                if(!empty($resImg)) {
                 $imagePath = 'https'. '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
                 $filePath = '../../../images/restaurant/';
 
                 if(file_exists($filePath . $resImg)) {
                     $resImgUrl = $imagePath . $resImg;
                 }
+            }
                 
                 $arr = array(
                 'country_name' => $result[$key]['cname'],
                 'city_name' => $result[$key]['name'],
                 'restaurnat_name' => $result[$key]['restaurant_name'],
-                'restaurant_image' => $resImgUrl
+                'restaurant_image' => (!isset($resImgUrl) ? null : $resImgUrl)
             );
                 // Push Restaurant Data Into Data Array
                 array_push($this->data, $arr);
