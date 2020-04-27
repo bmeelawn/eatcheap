@@ -4,7 +4,7 @@ include '../../config/database.php';
 
 class MenuModel extends DBConnection {
     protected function getMenus($res_id) {
-        $sql = "SELECT r.id as restaurant_id, m.id, m.name, m.price 
+        $sql = "SELECT r.id as restaurant_id, m.id, m.name, m.price, m.food_image
         FROM menu AS m
        LEFT JOIN restaurants AS r ON  m.restaurant_id = r.id
        WHERE m.restaurant_id = ?";
