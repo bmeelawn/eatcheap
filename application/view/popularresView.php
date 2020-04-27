@@ -4,6 +4,8 @@ include '../../model/popularResModel.php';
 
 class PopularresView extends PopularResModel {
     private $data = array();
+    private $arrR;
+
     public function viewPopularRestaurants() {
         $result =  $this->getPopularRestaurant();
         $count = $this->getCount();
@@ -14,9 +16,9 @@ class PopularresView extends PopularResModel {
             foreach($result as $key => $values) {
 
                 // Get Review for a Restaurant
-                $id = $result[$key]['res_id'];
-                $reviews = $this->getReviews($id);
-                $countReview = $this->getCount();
+                $res_id = $result[$key]['res_id'];
+                $this->viewReviews($res_id);
+               
 
                 $thmbImg = $result[$key]['thumbnail_image'];
                 $resImg = $result[$key]['restaurant_image'];
@@ -29,22 +31,9 @@ class PopularresView extends PopularResModel {
                 if(file_exists($filePath . $thmbImg)) {
                     $thmbImgUrl = $imagePath . $thmbImg;
                 } 
-                
-                $arrR = [];
-
-                if($countReview > 0) {
-                foreach($reviews as $key => $values) {
-                $arrReview =[    
-                    'restaurant_id' => $reviews[$key]['restaurant_id'],
-
-                'name' => $reviews[$key]['name'],
-                'comment' => $reviews[$key]['review']
-                ];  
-                array_push($arrR, $arrReview);           
-                }
-            }   
             
                 $arr = array(
+                'restaurant_id' => $result[$key]['res_id'],
                 'country_name' => $result[$key]['country_name'],
                 'city_name' => $result[$key]['city_name'],
                 'restaurant_name' => $result[$key]['restaurant_name'],
@@ -56,7 +45,7 @@ class PopularresView extends PopularResModel {
                 'average_cost' => $result[$key]['average_cost'],
                 'restaurant_image' => $resImgUrl,
                 'thumbnail_image' => $thmbImgUrl,
-                'review' => $arrR
+                'reviews' => $this->arrR
             );
 
                 // Push Restaurant Data Into Data Array
@@ -82,4 +71,21 @@ class PopularresView extends PopularResModel {
         }
 
     }
+
+    private function viewReviews($res_id) {
+        $reviews = $this->getReviews($res_id);
+        $countReview = $this->getCount();
+
+        $this->arrR = [];
+
+        if($countReview > 0) {
+        foreach($reviews as $key => $values) {
+        $arrReview =[    
+        'name' => $reviews[$key]['name'],
+        'comment' => $reviews[$key]['review']
+        ];  
+        array_push($this->arrR, $arrReview);
+        } 
+    }
+}
 }
