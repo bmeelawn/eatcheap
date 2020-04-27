@@ -73,19 +73,19 @@ class PopularresView extends PopularResModel {
     }
 
     private function viewReviews($res_id) {
-        $reviews = $this->getReviews($res_id);
-        $countReview = $this->getCount();
+            $reviews = $this->getReviews($res_id);
+            $countReview = $this->getCount();
 
-        $this->arrR = [];
+            $this->arrR = [];
 
-        if($countReview > 0) {
-        foreach($reviews as $key => $values) {
-        $arrReview =[    
-        'name' => $reviews[$key]['name'],
-        'comment' => $reviews[$key]['review']
-        ];  
-        array_push($this->arrR, $arrReview);
-        } 
+            if($countReview > 0) {
+            foreach($reviews as $key => $values) {
+            $arrReview =[    
+            'name' => $reviews[$key]['name'],
+            'comment' => $reviews[$key]['review']
+            ];  
+            array_push($this->arrR, $arrReview);
+            } 
+        }
     }
-}
 }
