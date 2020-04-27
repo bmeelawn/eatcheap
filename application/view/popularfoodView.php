@@ -21,6 +21,7 @@ class PopularfoodView extends PopularFoodModel {
                 }   
 
                 $arr = array(
+                'restaurant_id' => $result[$key]['res_id'],
                 'restaurnat_name' => $result[$key]['restaurant_name'],
                 'cuisine_name' => $result[$key]['cuisine_name'],
                 'address' => $result[$key]['location'],
