@@ -1,6 +1,6 @@
 <?php
 
-include '../../model/MenuModel.php';
+include '../../model/menuModel.php';
 
 class MenuView extends MenuModel {
     private $data = array();
