@@ -16,7 +16,7 @@ class ReviewView extends ReviewModel {
 
             $id = ['restaurant_id' => $result[$key]['restaurant_id']];
             $arr = [
-                'comment' => $result[$key]['review'],
+                'comment' => htmlspecialchars($result[$key]['review']),
                 'name' => $result[$key]['name']
             ];
         // Push Data Into Data Array
