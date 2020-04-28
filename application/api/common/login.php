@@ -15,8 +15,12 @@ if(authAPI()) {
         if(empty(isEmpty())) {
         echo $userlogin->viewUserDetails($_POST['username'], $_POST['password']);
         } else {
-            echo isEmpty();
-        }
+            echo json_encode([
+                "status" => false,
+                "message" => "Username and password not set",
+                'data' => null
+                ]); 
+            }
     } else {
         echo json_encode([
             "status" => false,
