@@ -36,3 +36,23 @@ function getParam() {
     }
     return false;
 }
+
+function isEmpty() {
+    $error = "";
+    if(empty($_POST['username'])) {
+        $error = "Username field cannot be Empty!";
+    } else if(empty($_POST['password'])) {
+        $error = "Password field cannot be Empty!";
+    }
+
+    if(!empty($error)) {
+        return json_encode([
+        "status" => false,
+        "message" => $error,
+        'data' => []
+        ]); 
+    } 
+
+    return $error;
+
+}
