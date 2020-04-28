@@ -11,10 +11,10 @@ if(authAPI()) {
 
     $userlogin = new LoginView();
 
-    $data = json_decode(file_get_contents('php://input'),true);
+    // $_POST = json_decode(file_get_contents('php://input'),true);
 
-    $username = $data['username'];
-    $password = $data['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password']; 
 
     echo json_encode([
         "status" => true,
