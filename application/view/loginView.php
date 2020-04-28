@@ -3,7 +3,7 @@ include '../../model/loginModel.php';
 
 class LoginView extends LoginModel {
     private $error;
-    private $arr=[];
+    private $arr;
     public function viewUserDetails($username, $password) {
         $username = strip_tags(trim($username));
         $password = strip_tags(trim($password));
