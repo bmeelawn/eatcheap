@@ -11,16 +11,24 @@ if(authAPI()) {
 
     $userlogin = new LoginView();
 
+    $data = json_decode(file_get_contents('php://input'),true);
+
+    $username = $data['username'];
+    $password = $data['password'];
+
+    echo json_encode([
+        "status" => true,
+        "message" => "Param not set.",
+        'data' => $username
+        ]);  
+
+    exit();
     if(isset($_POST['username']) && isset($_POST['password'])) {
         if(empty(isEmpty())) {
         echo $userlogin->viewUserDetails($_POST['username'], $_POST['password']);
         } else {
-            echo json_encode([
-                "status" => false,
-                "message" => "Username and password not set",
-                'data' => null
-                ]); 
-            }
+            echo isEmpty();
+        }
     } else {
         echo json_encode([
             "status" => false,
