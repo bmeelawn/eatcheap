@@ -30,8 +30,19 @@ class PopularfoodView extends PopularFoodModel {
                 'food_image' => $imageUrl,
                 'food_name' => $result[$key]['special_item']
             );
-                // Push Food Data Into Data Array
-                array_push($this->data, $arr);
+            $imgs= $result[$key]['images'];
+            $imageArr = explode(",", $imgs);
+            $images['images'] = [];
+            foreach($imageArr as $key=>$values) {
+                $imagePath = 'https'. '://' . $_SERVER['HTTP_HOST'] . '/images/restaurant/';
+                $filePath = '../../../images/restaurant/';
+                if(file_exists($filePath . $imageArr[$key])) {
+                    array_push($images['images'], $imagePath . $imageArr[$key]);
+                }   
+            }
+            
+            // Push Restaurant Data Into Array
+            array_push($this->data, array_merge($arr, $images));
             }
             // Set HTTP Response -200 OK
             http_response_code(200);
