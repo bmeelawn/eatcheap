@@ -8,6 +8,7 @@ include '../../includes/autoloader-class.php';
 include '../../includes/utility.php';
 
 if(authAPI()) {
+
     $userlogin = new LoginView();
 
     if(isset($_POST['username']) && isset($_POST['password'])) {
@@ -16,5 +17,11 @@ if(authAPI()) {
         } else {
             echo isEmpty();
         }
-    } 
-}
+    } else {
+        echo json_encode([
+            "status" => false,
+            "message" => "Param not set.",
+            'data' => null
+            ]); 
+        } 
+} 
