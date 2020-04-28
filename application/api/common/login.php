@@ -7,33 +7,21 @@ header('Access-Control-Allow-Method: POST');
 include '../../includes/autoloader-class.php';
 include '../../includes/utility.php';
 
-// if(authAPI()) {
+if(authAPI()) {
 
     $userlogin = new LoginView();
 
-    $data = json_decode(file_get_contents('php://input'),true);
+    $headers = getallheaders();
 
-    $username = $data['username'];
-    $password = $data['password']; 
+    if($headers["Content-Type"]=="text/plain") {
+        $_POST = json_decode(file_get_contents('php://input'),true);
+    }
 
-    echo json_encode([
-        "status" => true,
-        "message" => "Param not set.",
-        'data' => $username
-        ]);  
-
-    // exit();
-    // if(isset($_POST['username']) && isset($_POST['password'])) {
-    //     if(empty(isEmpty())) {
-    //     echo $userlogin->viewUserDetails($_POST['username'], $_POST['password']);
-    //     } else {
-    //         echo isEmpty();
-    //     }
-    // } else {
-    //     echo json_encode([
-    //         "status" => false,
-    //         "message" => "Param not set.",
-    //         'data' => null
-    //         ]); 
-    //     } 
-// } 
+    if(isset($_POST['username']) && isset($_POST['password'])) {
+        if(empty(isEmpty())) {
+        echo $userlogin->viewUserDetails($_POST['username'], $_POST['password']);
+        } else {
+            echo isEmpty();
+        }
+    } 
+} 
