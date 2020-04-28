@@ -14,7 +14,7 @@ class PopularFoodModel extends DBConnection {
         $this->bindValue(1, 1);
         $result = $this->execute();
         return $this->resultSet();
-        }
+        }  
         protected function getCount() {
             return $this->rowCount(); 
         }
