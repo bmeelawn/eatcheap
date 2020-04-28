@@ -1,7 +1,7 @@
 <?php
 
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: text/json, text/html; charset=UTF-8');
+header('Content-Type: text/json,charset=UTF-8');
 header('Access-Control-Allow-Method: POST');
 
 include '../../includes/autoloader-class.php';
