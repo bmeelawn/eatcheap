@@ -24,6 +24,7 @@ class LoginView extends LoginModel {
                 $this->arr['lastname'] = $getUserDetails['lastname'];
                 $this->arr['username'] = $getUserDetails['username'];
                 $this->arr['email'] = $getUserDetails['email'];
+                $this->arr['address'] = htmlspecialchars($getUserDetails['address']);
                 $this->arr['image'] = $userImgLoc;
 
                 return json_encode([
