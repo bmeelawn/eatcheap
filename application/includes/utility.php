@@ -49,7 +49,7 @@ function isEmpty() {
         return json_encode([
         "status" => false,
         "message" => $error,
-        'data' => []
+        'data' => null
         ]); 
     } 
 
