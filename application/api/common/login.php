@@ -11,10 +11,10 @@ include '../../includes/utility.php';
 
     $userlogin = new LoginView();
 
-    $_POST = json_decode(file_get_contents('php://input'),true);
+    $data = json_decode(file_get_contents('php://input'),true);
 
-    $username = $_POST['username'];
-    $password = $_POST['password']; 
+    $username = $data['username'];
+    $password = $data['password']; 
 
     echo json_encode([
         "status" => true,
