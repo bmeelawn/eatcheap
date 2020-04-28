@@ -11,7 +11,7 @@ include '../../includes/utility.php';
 
     $userlogin = new LoginView();
 
-    // $_POST = json_decode(file_get_contents('php://input'),true);
+    $_POST = json_decode(file_get_contents('php://input'),true);
 
     $username = $_POST['username'];
     $password = $_POST['password']; 
